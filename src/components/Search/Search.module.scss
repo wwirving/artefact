@@ -1,0 +1,105 @@
+
+// small tablets/large smartphones (landscape)
+$screen-sm-min: 576px;
+// small tablets (portrait)
+$screen-md-min: 768px;
+// Tablets and small desktops
+$screen-lg-min: 882px;
+// large tablets/desktops
+$screen-xl-min: 1200px;
+
+// mixins
+
+// small devices
+
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// medium devices
+
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// large devices
+
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// extra-large devices
+
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+// custom devices
+
+@mixin rwd($screen) {
+  @media (min-width: $screen+"px") {
+    @content;
+  }
+}
+
+
+input {
+  width: 100%;
+  height: 80%;
+  border: 1px solid black;
+  padding-left: 10px;
+  @include md {
+    padding: 3%;
+    text-align: center;
+  }
+}
+
+input[type="text"]:focus {
+  outline: none; /* oranges! yey */
+}
+
+::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+::-moz-placeholder {
+  /* Firefox 19+ */
+}
+
+.searchBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include md {
+    flex-direction: column;
+    gap: 10%;
+  }
+}
+
+.searchButton {
+  display: flex;
+  height: 80%;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 15px;
+  margin-left: 20px;
+  @include md {
+    align-self: flex-start;
+    margin-left: 0;
+    width: 100%;
+    padding: 3%;
+
+  }
+
+}

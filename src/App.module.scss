@@ -1,0 +1,144 @@
+@font-face {
+  font-family: "Sporting";
+  src: url("./assets//fonts/Sporting_Grotesque-Regular_web.woff");
+}
+
+@font-face {
+  font-family: "SportingBold";
+  src: url("./assets//fonts/Sporting_Grotesque-Bold_web.woff");
+}
+
+// small tablets/large smartphones (landscape)
+$screen-sm-min: 576px;
+// small tablets (portrait)
+$screen-md-min: 768px;
+// Tablets and small desktops
+$screen-lg-min: 882px;
+// large tablets/desktops
+$screen-xl-min: 1200px;
+
+// mixins
+
+// small devices
+
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// medium devices
+
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// large devices
+
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// extra-large devices
+
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+// custom devices
+
+@mixin rwd($screen) {
+  @media (min-width: $screen+"px") {
+    @content;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  color: black;
+  font-family: "Sporting";
+  font-size: 3vw;
+  @include md {
+    font-size: 1.2vw;
+  }
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+}
+
+h1 {
+  font-size: 8vw;
+  @include md {
+    font-size: 2.5vw;
+  }
+}
+
+.inputBlock {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.1fr 0.2fr 0.1fr;
+  gap: 5%;
+  @include sm{
+    gap: 2%;
+    grid-template-rows: 0.1fr 0.1fr 0.1fr;
+  }
+  @include md {
+    grid-template-rows: 0.1fr 0.5fr 0.1fr;
+    width: 100%;
+  }
+
+}
+
+.outputBlock {
+  display: grid;
+  min-width: 0;
+  min-height: 0;
+  gap: 5%;
+  grid-template-columns: 1fr;
+  grid-template-rows: 4fr 1fr;
+  @include md {
+    grid-template-rows: 4fr 0.5fr;
+    gap: 5%;
+  }
+}
+
+.mainContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr;
+  @include sm {
+    grid-template-rows: 1fr 4fr;
+  }
+  @include md {
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: 1fr;
+    gap: 5%;
+    padding: 2%;
+  }
+  height: 100%;
+  width: 90%;
+  gap: 5%;
+}
+
+.page {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}

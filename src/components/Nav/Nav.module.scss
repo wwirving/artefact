@@ -1,0 +1,13 @@
+.navContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid black;
+  height: 80%;
+  padding: 0 15%;
+}
+
+span:hover {
+  color: #f03635
+}

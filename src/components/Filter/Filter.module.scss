@@ -1,0 +1,107 @@
+
+// small tablets/large smartphones (landscape)
+$screen-sm-min: 576px;
+// small tablets (portrait)
+$screen-md-min: 768px;
+// Tablets and small desktops
+$screen-lg-min: 882px;
+// large tablets/desktops
+$screen-xl-min: 1200px;
+
+// mixins
+
+// small devices
+
+@mixin sm {
+  @media (min-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// medium devices
+
+@mixin md {
+  @media (min-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// large devices
+
+@mixin lg {
+  @media (min-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// extra-large devices
+
+@mixin xl {
+  @media (min-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+
+// custom devices
+
+@mixin rwd($screen) {
+  @media (min-width: $screen+"px") {
+    @content;
+  }
+}
+
+
+.title {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  color: black;
+  padding-top: 5%;
+  @include md {
+    width: 100%;
+    border: 1px solid black;
+    padding: 4%;
+  }
+}
+.filters {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  @include md {
+    border: 1px solid black;
+  }
+  & > p {
+    border: 1px solid black;
+    text-align: center;
+    padding: 3%;
+    margin: 2%;
+    @include md {
+      padding: 0 5%;
+    }
+  }
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.filterContainer {
+  border: 1px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  @include md {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.05fr 1fr;
+    gap: 7%;
+    display: flex;
+    flex-direction: column;
+    border: none;
+  }
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.titleBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
