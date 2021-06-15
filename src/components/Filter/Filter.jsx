@@ -4,16 +4,15 @@ import styles from "./Filter.module.scss";
 const Filter = (props) => {
   const { changeMedium } = props;
 
-
   // assign variable on click
 
-  // run function to 
+  // run function to
 
   return (
     <>
       <div className={styles.filterContainer}>
         <div className={styles.titleBox}>
-          <p className={styles.title}>MEDIUM</p>
+          <p className={styles.title}>Set Medium</p>
         </div>
         <div
           className={styles.filters}

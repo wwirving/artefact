@@ -1,4 +1,3 @@
-
 // small tablets/large smartphones (landscape)
 $screen-sm-min: 576px;
 // small tablets (portrait)
@@ -50,12 +49,11 @@ $screen-xl-min: 1200px;
   }
 }
 
-
 input {
   width: 100%;
-  height: 80%;
   border: 1px solid black;
   padding-left: 10px;
+  height: 80%;
   @include md {
     padding: 3%;
     text-align: center;
@@ -88,18 +86,26 @@ input[type="text"]:focus {
 
 .searchButton {
   display: flex;
-  height: 80%;
   border: 1px solid black;
   align-items: center;
   justify-content: center;
   padding: 5px 15px;
+  height: 80%;
   margin-left: 20px;
   @include md {
     align-self: flex-start;
     margin-left: 0;
     width: 100%;
     padding: 3%;
-
   }
+}
 
+.instructions {
+  border: 1px solid black;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }

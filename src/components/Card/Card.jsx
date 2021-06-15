@@ -10,14 +10,19 @@ const Card = (props) => {
 
   const [image, setImage] = useState("");
 
+  const [title, setTitle] = useState("");
+
+  const [date, setDate] = useState("");
+
+  const [medium, setMedium] = useState("");
+
   const [sculpture, setSculpture] = useState({});
 
   const [showInfo, setShowInfo] = useState(false);
 
   const flipCard = showInfo ? styles.description : styles.opaque;
 
-  useEffect(() => {
-
+  useEffect(async () => {
     const getSculpture = async (theIndex) => {
       const string = `${API_URL}${objects[theIndex]}`;
       return fetch(`${string}`)
@@ -30,12 +35,12 @@ const Card = (props) => {
           }
         });
     };
-  
+
     const updateSculpture = async (currentIndex) => {
       const apiObject = await getSculpture(currentIndex);
       setSculpture(apiObject);
     };
-  
+
     const updateImage = (currentSculpture) => {
       if (Object.keys(sculpture).length > 1) {
         if (sculpture.primaryImage.length > 1) {
@@ -46,19 +51,21 @@ const Card = (props) => {
       } else return "";
     };
 
-    updateSculpture(index);
-    updateImage(sculpture);
-  }, [objects, index, sculpture]);
-
+    updateSculpture(index).then(() => {
+      updateImage(sculpture);
+      setTitle(sculpture.title);
+      setMedium(sculpture.medium);
+      setDate(sculpture.objectDate);
+    });
+  }, [index]);
 
   return (
     <>
-      <div className={styles.imgBox}
-      onClick={()=> setShowInfo(!showInfo)}>
+      <div className={styles.imgBox} onClick={() => setShowInfo(!showInfo)}>
         <div className={flipCard}>
-          <p>TITLE -{sculpture.title}</p>
-          <p>MEDIUM - {sculpture.medium}</p>
-          <p>DATE - {sculpture.objectDate}</p>
+          <p>TITLE -{title}</p>
+          <p>MEDIUM - {medium}</p>
+          <p>DATE - {date}</p>
         </div>
         <img src={image} alt="" onerror="this.style.display='none'" />
       </div>
