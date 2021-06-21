@@ -10,25 +10,38 @@ function App() {
   const API_URL =
     "https://collectionapi.metmuseum.org/public/collection/v1/search?hasImage=true&q=";
 
-  const [lastSearchTerm, setLastSearchTerm] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const [medium, setMedium] = useState("");
 
   const [objectArr, setObjectArr] = useState([]);
 
-  const zeroIndex = 1;
+  const [index, setIndex] = useState(0);
 
-  const [index, setIndex] = useState(zeroIndex);
+  const [sculpture, setSculpture] = useState({});
 
-  const getObjects = (searchTerm) => {
+  const getObjects = () => {
     const string = `${API_URL}${searchTerm}&medium=${medium}`;
-    setLastSearchTerm(searchTerm);
     return fetch(`${string}`)
       .then((res) => res.json())
       .then((jsonResponse) => {
         if (jsonResponse.objectIDs !== null) {
-          increaseIndex();
-          return jsonResponse.objectIDs;
+          setObjectArr(jsonResponse.objectIDs);
+        } else {
+          setObjectArr([]);
+        }
+      });
+  };
+
+  const getSculpture = () => {
+    const API_URL =
+    "https://collectionapi.metmuseum.org/public/collection/v1/objects/";
+    const string = `${API_URL}${objectArr[index]}`;
+    return fetch(`${string}`)
+      .then((res) => res.json())
+      .then((jsonResponse) => {
+        if (jsonResponse !== null) {
+          setSculpture(jsonResponse);
         } else {
           return [];
         }
@@ -36,10 +49,23 @@ function App() {
   };
 
   const increaseIndex = () => {
-    if (index <= objectArr.length) {
+    if (index < objectArr.length - 1) {
       setIndex(index + 1);
+      console.log(index);
+      console.log(objectArr[index]);
+    } else if (index == objectArr.length - 1){
+      zeroIndex();
     }
   };
+
+  const zeroIndex = () => {
+    if (index > 1){
+      setIndex(1);
+    } else if (index <= 1){
+      setIndex(2);
+    }
+    
+  }
 
   const decreaseIndex = () => {
     if (index > 0) {
@@ -47,23 +73,32 @@ function App() {
     }
   };
 
-  const pulse = async (e) => {
-    await updateObjects(lastSearchTerm);
-    setIndex(index - index);
+  const updateSearchTerm = (searchField) => {
+    console.log(searchField.target.value);
+    setSearchTerm(searchField.target.value);
   };
 
-  const updateObjects = async (searchTerm) => {
-    const apiObjects = await getObjects(searchTerm);
-    setObjectArr(apiObjects);
-  };
-
-  const updateMedium = async (searchTerm) => {
+  const updateMedium = (searchTerm) => {
     setMedium(searchTerm.innerText);
   };
 
-  useEffect(async ()=>{
-   pulse();
-  },[medium]);
+  const triggerSearch = () => {
+    console.log(medium);
+    console.log(searchTerm);
+    console.log(index);
+    getObjects().then(() => {
+      zeroIndex();
+      console.log(objectArr.length);
+    })
+  }
+
+  useEffect(() => {
+    if (objectArr.length > 1){
+      getSculpture();
+    } else {
+      return null;
+    }
+  },[index])
 
 
 
@@ -74,13 +109,13 @@ function App() {
           <Title />
           <Filter changeMedium={updateMedium} />
           <Search
-            updateSearchText={updateObjects}
+            updateSearchText={updateSearchTerm}
             medium={medium}
-            reset={pulse}
+            click={triggerSearch}
           />
         </div>
         <div className={styles.outputBlock}>
-          <Card objects={objectArr} index={index} />
+          <Card sculpture={sculpture}/>
           <Nav next={increaseIndex} prev={decreaseIndex} />
         </div>
       </div>

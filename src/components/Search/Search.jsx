@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Search.module.scss";
 
 const Search = (props) => {
-  const { updateSearchText, reset } = props;
+  const { updateSearchText, click } = props;
 
   return (
     <>
@@ -13,13 +13,13 @@ const Search = (props) => {
         <input
           type="text"
           placeholder="ENTER KEYWORD"
-          onInput={(e) => updateSearchText(e.target.value)}
+          onInput={updateSearchText}
         ></input>
         {/* <div className={styles.instructions}>
           <p> 3. Run Search </p>
         </div> */}
         <div className={styles.searchButton}>
-          <p onClick={(e) => reset(e)}>SEARCH</p>
+          <p onClick={(e)=>click(e)}>SEARCH</p>
         </div>
       </div>
     </>
