@@ -142,3 +142,16 @@ h1 {
   justify-content: flex-start;
   align-items: center;
 }
+
+@media (max-width: 600px) {
+  /* mention the width limit here */
+  input::-webkit-input-placeholder {
+    color: transparent;
+  }
+  input:-moz-placeholder {
+    color: transparent;
+  }
+  input::-moz-placeholder {
+    color: transparent;
+  }
+}
