@@ -91,16 +91,14 @@ h1 {
   grid-template-columns: 1fr;
   grid-template-rows: 0.1fr 0.2fr 0.1fr;
   gap: 5%;
-  @include sm{
+  @include sm {
     gap: 2%;
     grid-template-rows: 0.1fr 0.1fr 0.1fr;
   }
   @include md {
     grid-template-rows: 0.1fr 0.5fr 0.4fr;
     width: 100%;
-
   }
-
 }
 
 .outputBlock {
@@ -132,7 +130,7 @@ h1 {
   }
   height: 100%;
   width: 90%;
-  gap: 2%;
+  gap: 4%;
 }
 
 .page {
