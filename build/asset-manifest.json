@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.7825348c.chunk.css",
+    "main.css": "/static/css/main.8fc894d9.chunk.css",
     "main.js": "/static/js/main.f436a910.chunk.js",
     "main.js.map": "/static/js/main.f436a910.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.c2acc129.js",
@@ -10,14 +10,14 @@
     "static/js/3.d1fc4864.chunk.js": "/static/js/3.d1fc4864.chunk.js",
     "static/js/3.d1fc4864.chunk.js.map": "/static/js/3.d1fc4864.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.7825348c.chunk.css.map": "/static/css/main.7825348c.chunk.css.map",
+    "static/css/main.8fc894d9.chunk.css.map": "/static/css/main.8fc894d9.chunk.css.map",
     "static/js/2.63481392.chunk.js.LICENSE.txt": "/static/js/2.63481392.chunk.js.LICENSE.txt",
     "static/media/App.module.scss": "/static/media/Sporting_Grotesque-Regular_web.7e1c243c.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.c2acc129.js",
     "static/js/2.63481392.chunk.js",
-    "static/css/main.7825348c.chunk.css",
+    "static/css/main.8fc894d9.chunk.css",
     "static/js/main.f436a910.chunk.js"
   ]
 }
